@@ -1,0 +1,3 @@
+C:/Users/avkol/CLionProjects/COSC350ExecutionTmeSort/cmake-build-debug/CMakeFiles/COSC350ExecutionTmeSort.dir
+C:/Users/avkol/CLionProjects/COSC350ExecutionTmeSort/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/avkol/CLionProjects/COSC350ExecutionTmeSort/cmake-build-debug/CMakeFiles/rebuild_cache.dir
