@@ -2,6 +2,7 @@
 #include <fstream>
 #include <chrono>
 #include <vector>
+#include <ctime>
 
 
 /*
@@ -245,8 +246,7 @@ int main() {
     std::cout << bubbleDuration.count() << " milliseconds" << std::endl;
     std::cout << quickDuration.count() << " milliseconds" << std::endl;
     std:: cout << mergeDuration.count() << " milliseconds" << std::endl;
-
-
+    std::cout << "number of clocks per second: " << CLOCKS_PER_SEC << std::endl;
 
     return 0;
 }
