@@ -184,7 +184,7 @@ int main() {
     std::vector<int>numbers;
     int num;
 
-    std::ifstream file("random_numbers.txt");
+    std::ifstream file("random_numbers_small.txt");
 
     while (file >> num) {
         numbers.push_back(num);
