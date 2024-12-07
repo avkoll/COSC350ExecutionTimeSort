@@ -206,15 +206,14 @@ int main() {
     std::vector<int>numbers;
     int num;
 
-    std::ifstream file("random_numbers.txt");
+    std::ifstream file("random_numbers_small.txt");
 
+    // load numbers from file into numbers vector
     while (file >> num) {
         numbers.push_back(num);
     }
 
     file.close();
-
-    std::cout << numbers.size() << std::endl;
 
     // start selection sort timer
     auto selectionStart = std::chrono::high_resolution_clock::now();
@@ -267,7 +266,7 @@ int main() {
     auto linearStart = std::chrono::high_resolution_clock::now();
 
     // search one of the already sorted vectors
-    bool found = linear_search(numbers, numbers.size(), 30291);
+    bool found = linear_search(numbers, numbers.size(), 99999);
 
     auto linearStop = std::chrono::high_resolution_clock::now();
     auto linearDuration = std::chrono::duration_cast<std::chrono::milliseconds>(
@@ -276,19 +275,40 @@ int main() {
     // start binary search timer
     auto binaryStart = std::chrono::high_resolution_clock::now();
 
-    bool found2 = binary_search(mergeSortVector, mergeSortVector.size(), 30291);
+    bool found2 = binary_search(mergeSortVector, mergeSortVector.size(), 99999);
 
     auto binaryStop = std::chrono::high_resolution_clock::now();
     auto binaryDuration = std::chrono::duration_cast<std::chrono::milliseconds>(
         binaryStop - binaryStart);
 
-    std::cout << selectionDuration << std::endl;
-    std::cout << bubbleDuration << std::endl;
-    std::cout << quickDuration << std::endl;
-    std:: cout << mergeDuration << std::endl;
-    std::cout << "number of clocks per second: " << CLOCKS_PER_SEC << std::endl;
-    std::cout << linearDuration << " 1 if found 0 if not found: " << found << std::endl;
-    std::cout << binaryDuration << " 1 if found 0 if not found: " << found2 << std::endl;
+
+    std::cout << "The sample sized used is: " << numbers.size()
+    << " numbers." << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
+
+    std::cout << "Algorithm        | Time" << std::endl;
+
+    std::cout << "----------------------------------------" << std::endl;
+
+    std::cout << "Selection Sort   | " << selectionDuration
+    << std::endl;
+
+
+
+    std::cout << "Bubble Sort      | " << bubbleDuration
+    << std::endl;
+
+    std::cout << "Quick Sort       | " << quickDuration
+    << std::endl;
+
+    std::cout << "Merge Sort       | " << mergeDuration
+    << std::endl;
+
+    std::cout << "Linear Search    | " << linearDuration
+    << "    to traverse to the last element in the list." << std::endl;
+
+    std::cout << "Binary Search    | " << binaryDuration
+    << "    to traverse to the last element in the list." << std::endl;
 
     return 0;
 }
