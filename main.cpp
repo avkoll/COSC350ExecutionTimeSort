@@ -4,7 +4,6 @@
 #include <vector>
 #include <ctime>
 
-
 /*
 Each function takes a pointer to the array containing numbers read from file
 the functions will be called in main and a timer will be set to measure how
@@ -13,7 +12,6 @@ They will only output the first and last elements to verify that they sorted
 the array properly.
 The output will be removed in the final code.
 */
-
 
 // Selection Sort
 void selectionSort(std::vector<int> &arr) {
@@ -169,7 +167,30 @@ void mergeSort(std::vector<int>& arr, int left, int right)
 }
 
 // Linear Search
+bool linear_search(std::vector<int>& array, int size, int value) {
+    for (int i = 0; i < size; i++) {
+        if (array[i] == value) {
+            return true;
+        }
+    }
+    return false;
+}
 // Binary Search
+int binary_search(std::vector<int>& array, int size, int value) {
+    int low = 0;
+    int high = size - 1;
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (array[mid] == value) {
+            return mid;
+        } else if (array[mid] < value) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return -1;
+}
 
 // print array
 void printArray(std::vector<int> &arr) {
@@ -185,7 +206,7 @@ int main() {
     std::vector<int>numbers;
     int num;
 
-    std::ifstream file("random_numbers_small.txt");
+    std::ifstream file("random_numbers.txt");
 
     while (file >> num) {
         numbers.push_back(num);
@@ -242,11 +263,32 @@ int main() {
     auto mergeDuration = std::chrono::duration_cast<std::chrono::milliseconds>(
         mergeStop - mergeStart);
 
-    std::cout << selectionDuration.count() << " milliseconds" << std::endl;
-    std::cout << bubbleDuration.count() << " milliseconds" << std::endl;
-    std::cout << quickDuration.count() << " milliseconds" << std::endl;
-    std:: cout << mergeDuration.count() << " milliseconds" << std::endl;
+    // start linear search timer
+    auto linearStart = std::chrono::high_resolution_clock::now();
+
+    // search one of the already sorted vectors
+    bool found = linear_search(numbers, numbers.size(), 30291);
+
+    auto linearStop = std::chrono::high_resolution_clock::now();
+    auto linearDuration = std::chrono::duration_cast<std::chrono::milliseconds>(
+        linearStop - linearStart);
+
+    // start binary search timer
+    auto binaryStart = std::chrono::high_resolution_clock::now();
+
+    bool found2 = binary_search(mergeSortVector, mergeSortVector.size(), 30291);
+
+    auto binaryStop = std::chrono::high_resolution_clock::now();
+    auto binaryDuration = std::chrono::duration_cast<std::chrono::milliseconds>(
+        binaryStop - binaryStart);
+
+    std::cout << selectionDuration << std::endl;
+    std::cout << bubbleDuration << std::endl;
+    std::cout << quickDuration << std::endl;
+    std:: cout << mergeDuration << std::endl;
     std::cout << "number of clocks per second: " << CLOCKS_PER_SEC << std::endl;
+    std::cout << linearDuration << " 1 if found 0 if not found: " << found << std::endl;
+    std::cout << binaryDuration << " 1 if found 0 if not found: " << found2 << std::endl;
 
     return 0;
 }
