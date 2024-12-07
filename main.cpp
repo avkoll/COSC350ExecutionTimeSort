@@ -2,7 +2,6 @@
 #include <fstream>
 #include <chrono>
 #include <vector>
-#include <ctime>
 
 /*
 Each function takes a pointer to the array containing numbers read from file
@@ -13,6 +12,13 @@ the array properly.
 The output will be removed in the final code.
 */
 
+/*
+ * Source: GeeksforGeeks
+ * Title: Selection Sort
+ * URL: https://www.geeksforgeeks.org/selection-sort/
+ * Description: This implementation of Selection Sort is adapted from the GeeksforGeeks article.
+ * Modifications: Changed the array implementation to use std::vector and added comments for clarity.
+ */
 // Selection Sort
 void selectionSort(std::vector<int> &arr) {
     int n = arr.size();
@@ -39,6 +45,13 @@ void selectionSort(std::vector<int> &arr) {
         std::swap(arr[i], arr[min_idx]);
     }
 }
+/*
+ * Source: GeeksforGeeks
+ * Title: Bubble Sort
+ * URL: https://www.geeksforgeeks.org/bubble-sort/
+ * Description: This implementation of bubble Sort is adapted from the GeeksforGeeks article.
+ * Modifications: Changed the array implementation to use std::vector and added comments for clarity.
+ */
 // Bubble Sort
 void bubbleSort(std::vector<int>& arr) {
     int n = arr.size();
@@ -59,6 +72,13 @@ void bubbleSort(std::vector<int>& arr) {
     }
 }
 
+/*
+ * Source: GeeksforGeeks
+ * Title: Quick Sort
+ * URL: https://www.geeksforgeeks.org/quick-sort/
+ * Description: This implementation of Quick Sort is adapted from the GeeksforGeeks article.
+ * Modifications: Changed the array implementation to use std::vector and added comments for clarity.
+ */
 // Quick Sort algorithm and partition function needed for it.
 int partition(std::vector<int>& arr, int low, int high) {
 
@@ -85,7 +105,7 @@ int partition(std::vector<int>& arr, int low, int high) {
     return i + 1;
 }
 
-// The QuickSort function implementation
+// The QuickSort function
 void quickSort(std::vector<int>& arr, int low, int high) {
 
     if (low < high) {
@@ -101,6 +121,13 @@ void quickSort(std::vector<int>& arr, int low, int high) {
 }
 
 // Merge Sort
+/*
+ * Source: GeeksforGeeks
+ * Title: Merge Sort
+ * URL: https://www.geeksforgeeks.org/merge-sort/
+ * Description: This implementation of Merge Sort is adapted from the GeeksforGeeks article.
+ * Modifications: Changed the array implementation to use std::vector and added comments for clarity.
+ */
 // Merges two subarrays of arr[].
 // First subarray is arr[left..mid]
 // Second subarray is arr[mid+1..right]
@@ -165,7 +192,10 @@ void mergeSort(std::vector<int>& arr, int left, int right)
     mergeSort(arr, mid + 1, right);
     merge(arr, left, mid, right);
 }
-
+/*
+ * The Search algorithms are modified versions of the ones in this week's
+ * modules in canvas.
+ */
 // Linear Search
 bool linear_search(std::vector<int>& array, int size, int value) {
     for (int i = 0; i < size; i++) {
@@ -292,8 +322,6 @@ int main() {
 
     std::cout << "Selection Sort   | " << selectionDuration
     << std::endl;
-
-
 
     std::cout << "Bubble Sort      | " << bubbleDuration
     << std::endl;
