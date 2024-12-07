@@ -7,9 +7,8 @@
 Each function takes a pointer to the array containing numbers read from file
 the functions will be called in main and a timer will be set to measure how
 long it takes to sort or search the given array.
-They will only output the first and last elements to verify that they sorted
-the array properly.
-The output will be removed in the final code.
+I created a new clock for each function so each of the times can be stored
+within their own variables
 */
 
 /*
